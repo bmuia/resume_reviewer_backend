@@ -1,0 +1,12 @@
+/venv 
+
+.env
+
+/**migrations/
+
+!/**migrations/__init.oy__
+
+__pycache__
+*.pyc
+*.pyo
+

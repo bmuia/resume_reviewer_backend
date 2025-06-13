@@ -2,9 +2,9 @@
 
 .env
 
-/**migrations/
+/**/migrations/
 
-!/**migrations/__init.oy__
+!/**/migrations/__init.oy__
 
 __pycache__
 *.pyc

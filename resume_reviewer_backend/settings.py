@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'resumes',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +130,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CHATGPT_API_KEY = os.getenv('CHATGPT_API_KEY')
+
+# settings.py
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'files'
+
+AI_PROVIDER = os.getenv('AI_PROVIDER',default='gemini')

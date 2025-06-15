@@ -49,9 +49,6 @@ WORKDIR /app
 # Copy the rest of your application code
 COPY --chown=appuser:appuser . .
 
-# Run collectstatic before switching to non-root user
-RUN python manage.py collectstatic --noinput
-
 # Change to the app user
 USER appuser
 
@@ -59,4 +56,4 @@ USER appuser
 EXPOSE 8000
 
 # Command to run your application using Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "resume_reviewer_backend.wsgi:application"]
+CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:8000 resume_reviewer_backend.wsgi:application"]

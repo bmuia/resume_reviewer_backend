@@ -101,7 +101,7 @@ You'll need to set up environment variables for the backend to connect to the da
 The primary API endpoint for resume analysis is:
 
 * **`POST /api/resume-review/`**
-    * **Description:** Accepts a resume file and an optional job description file for AI-powered analysis.
+    * **Description:** Accepts a resume file and an optional job description text for AI-powered analysis.
     * **Request Type:** `multipart/form-data`
     * **Request Body Fields:**
         * `resume`: (File, **Required**) The applicant's resume pdf file (e.g., `resume.pdf`).

@@ -105,7 +105,7 @@ The primary API endpoint for resume analysis is:
     * **Request Type:** `multipart/form-data`
     * **Request Body Fields:**
         * `resume`: (File, **Required**) The applicant's resume pdf file (e.g., `resume.pdf`).
-        * `job_description`: (File, *Optional*).
+        * `job_description`: (Text, *Optional*).
     * **Success Response (`200 OK`):**
         ```json
         {

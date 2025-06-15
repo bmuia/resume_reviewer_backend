@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:17
+    container_name: resume_reviewer_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  django-web:
+    build: .
+    container_name: resume_reviewer
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      CHATGPT_API_KEY: ${CHATGPT_API_KEY}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      AI_PROVIDER: ${AI_PROVIDER}
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - static_volume:/app/static
+      - media_volume:/app/files
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
